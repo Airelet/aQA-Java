@@ -25,35 +25,39 @@ public class Homework4 {
 
         //task 3
         Scanner scanner = new Scanner(System.in);
-        int x = 0;
-        while (x < 10 || x >= 100) {
-            System.out.println("3. Введите двузначное число:");
-            x = scanner.nextInt();
+        System.out.println("3. Введите двузначное число:");
+        int x = scanner.nextInt();
+        if (x >= 10 && x < 100) {
+            int ones = x % 10;
+            int tens = (x - ones) / 10;
+            System.out.println(ones + " " + tens);
+        } else {
+            System.out.println("Вы ввели не двузначное число");
         }
-        int ones = x % 10;
-        int tens = (x - ones) / 10;
-        System.out.println(ones + " " + tens);
+
 
         //task 4
-        x = 0;
-        while (x < 10 || x >= 100) {
-            System.out.println("4. Введите двузначное число:");
-            x = scanner.nextInt();
+        System.out.println("4. Введите двузначное число:");
+        x = scanner.nextInt();
+        if (x >= 10 && x < 100) {
+            int ones = x % 10;
+            int tens = x - ones;
+            System.out.println(tens + "+" + ones);
+        } else {
+            System.out.println("Вы ввели не двузначное число");
         }
-        ones = x % 10;
-        tens = x - ones;
-        System.out.println(tens + "+" + ones);
 
         //task 5
-        x = 0;
-        while (x < 10 || x >= 100) {
-            System.out.println("5. Введите двузначное число:");
-            x = scanner.nextInt();
+        System.out.println("5. Введите двузначное число:");
+        x = scanner.nextInt();
+        if (x >= 10 && x < 100) {
+            int ones = x % 10;
+            int tens = (x - ones) / 10;
+            int weight = ones + tens;
+            System.out.println(weight);
+        } else {
+            System.out.println("Вы ввели не двузначное число");
         }
-        ones = x % 10;
-        tens = (x - ones) / 10;
-        int weight = ones + tens;
-        System.out.println(weight);
 
         //task 6
         System.out.println("6. Введите число:");
@@ -67,27 +71,28 @@ public class Homework4 {
         }
 
         //task 7
-        System.out.println("7. Введите число:");
+        System.out.println("7. Введите целое число:");
         x = scanner.nextInt();
         if (x >= 100) {
             System.out.println(--x);
         }
 
         //task 8
-        x = 0;
-        while (x < 10 || x >= 100) {
-            System.out.println("8. Введите двузначное число:");
-            x = scanner.nextInt();
-        }
-        ones = x % 10;
-        tens = (x - ones) / 10;
-        int mul = ones * tens;
-        if (x > mul){
-            System.out.printf("%d больше, чем произведение его цифр(%d)\n", x, mul);
-        } else if (x < mul) {
-            System.out.printf("%d меньше, чем произведение его цифр(%d)\n", x, mul);
+        System.out.println("8. Введите двузначное число:");
+        x = scanner.nextInt();
+        if (x >= 10 && x < 100) {
+            int ones = x % 10;
+            int tens = (x - ones) / 10;
+            int mul = ones * tens;
+            if (x > mul) {
+                System.out.printf("%d больше, чем произведение его цифр(%d)\n", x, mul);
+            } else if (x < mul) {
+                System.out.printf("%d меньше, чем произведение его цифр(%d)\n", x, mul);
+            } else {
+                System.out.printf("Число равно произведению его цифр %d\n", x);
+            }
         } else {
-            System.out.printf("Число равно произведению его цифр %d\n", x);
+            System.out.println("Вы ввели не двузначное число");
         }
 
         scanner.close();
