@@ -1,6 +1,9 @@
 package homework12;
 
 import homework12.games.Tetris;
+import homework12.inputDevices.KeyboardAndMouse;
+import homework12.inputDevices.PSController;
+import homework12.inputDevices.XboxController;
 import homework12.platforms.PlayStation;
 import homework12.platforms.Windows;
 import homework12.platforms.Xbox;
@@ -9,20 +12,39 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        PSController psController = new PSController();
+        XboxController xboxController = new XboxController();
+        KeyboardAndMouse keyboardAndMouse = new KeyboardAndMouse();
 
         // task 1-3
-        Windows windows = new Windows(720);
-        Xbox xbox = new Xbox(1080);
-        PlayStation playStation = new PlayStation(1080);
+        Windows windows = new Windows(720, psController);
+        Xbox xbox = new Xbox(1080, xboxController);
+        PlayStation playStation = new PlayStation(1080, psController);
 
-        Tetris game = new Tetris(List.of(windows, xbox));
+        Tetris tetris = new Tetris(List.of(windows, xbox));
 
-        windows.startGame(game);
+
+        windows.startGame(tetris);
         System.out.println("------------------------------");
-        playStation.startGame(game);
+        playStation.startGame(tetris);
         System.out.println("------------------------------");
         xbox.setScreenResolution(420);
-        xbox.startGame(game);
+        xbox.startGame(tetris);
+        System.out.println("------------------------------");
+        windows.setInputDevice(keyboardAndMouse);
+        windows.startGame(tetris);
+        System.out.println("------------------------------");
+        windows.setInputDevice(xboxController);
+        windows.startGame(tetris);
+        System.out.println("------------------------------");
+        playStation.setInputDevice(psController);
+        System.out.println(playStation.getPlatformName() + " controls:");
+        System.out.println(psController);
+        System.out.println("------------------------------");
+        System.out.println(playStation);
+        System.out.println("------------------------------");
+        System.out.println(tetris);
+
 
         // task 4
 //        StringBuilder stringBuilder = new StringBuilder();

@@ -1,16 +1,22 @@
 package homework12.platforms;
 
 import homework12.games.Game;
+import homework12.inputDevices.Controller;
 
 public class Windows extends PC {
 
-    public Windows(int screenResolution) {
-        super(screenResolution);
+
+    public Windows(int screenResolution, Controller controller) {
+        super(screenResolution, controller);
     }
 
     @Override
     public String getPlatformName() {
         return "Windows Home 11";
+    }
+
+    public void setInputDevice(Controller controller) {
+        super.setInputDevice(controller);
     }
 
     @Override

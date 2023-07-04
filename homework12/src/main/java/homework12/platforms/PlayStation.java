@@ -1,15 +1,12 @@
 package homework12.platforms;
 
 import homework12.games.Game;
+import homework12.inputDevices.PSController;
 
 public class PlayStation extends Console {
-    public PlayStation(int screenResolution) {
-        super("Play Station", screenResolution);
-    }
 
-    @Override
-    public String getInputDevice() {
-        return "PS controller";
+    public PlayStation(int screenResolution, PSController psController) {
+        super("Play Station", screenResolution, psController);
     }
 
     @Override
@@ -18,4 +15,7 @@ public class PlayStation extends Console {
         game.playGame(this);
     }
 
+    public void setInputDevice(PSController psController) {
+        super.setInputDevice(psController);
+    }
 }

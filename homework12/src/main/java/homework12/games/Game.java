@@ -39,4 +39,19 @@ public abstract class Game {
     }
 
     public abstract void playGame(Platform platform);
+
+    @Override
+    public String toString() {
+        StringBuilder platformNamesBuilder = new StringBuilder();
+        for (Platform platform : supportedPlatforms) {
+            platformNamesBuilder.append(platform.getPlatformName());
+            platformNamesBuilder.append(", ");
+        }
+        platformNamesBuilder.replace(platformNamesBuilder.length() - 2, platformNamesBuilder.length(), "");
+
+        return "All possible screen resolutions in games: " + SCREEN_RESOLUTIONS + "\n" +
+                "The Name of the game: " + gameName + "\n" +
+                "Minimal screen for the game: " + minScreenResolution + "\n" +
+                "Platforms supported by the game: " + platformNamesBuilder;
+    }
 }

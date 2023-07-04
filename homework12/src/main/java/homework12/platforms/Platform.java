@@ -1,18 +1,26 @@
 package homework12.platforms;
 
 import homework12.games.Game;
+import homework12.inputDevices.Controller;
 
 public abstract class Platform {
     private final String platformName;
     private int screenResolution;
-    private String enterButton;
+    private Controller inputDevice;
 
-    public Platform(String platformName, int screenResolution) {
+    public Platform(String platformName, int screenResolution, Controller controller) {
         this.platformName = platformName;
         this.screenResolution = screenResolution;
+        this.inputDevice = controller;
     }
 
-    public abstract String getInputDevice();
+    public Controller getInputDevice() {
+        return inputDevice;
+    }
+
+    protected void setInputDevice(Controller inputDevice) {
+        this.inputDevice = inputDevice;
+    }
 
     public String getPlatformName() {
         return platformName;
@@ -28,12 +36,10 @@ public abstract class Platform {
 
     public abstract void startGame(Game game);
 
-    protected void setEnterButton(String enterButton) {
-        this.enterButton = enterButton;
+    @Override
+    public String toString() {
+        return "Platform name: " + platformName + "; " +
+                "Screen resolution: " + screenResolution + "; \n" +
+                "Input device: " + inputDevice.getInputDeviceName();
     }
-
-    public String getEnterButton() {
-        return enterButton;
-    }
-
 }

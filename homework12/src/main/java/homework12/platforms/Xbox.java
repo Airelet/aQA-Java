@@ -1,15 +1,15 @@
 package homework12.platforms;
 
 import homework12.games.Game;
+import homework12.inputDevices.XboxController;
 
 public class Xbox extends Console {
-    public Xbox(int screenResolution) {
-        super("Xbox", screenResolution);
+    public Xbox(int screenResolution, XboxController xboxController) {
+        super("Xbox", screenResolution, xboxController);
     }
 
-    @Override
-    public String getInputDevice() {
-        return "Xbox controller";
+    public void setInputDevice(XboxController xboxController) {
+        super.setInputDevice(xboxController);
     }
 
     @Override
