@@ -1,5 +1,6 @@
 package homework14;
 
+import homework14.games.ScreenResolution;
 import homework14.games.Tetris;
 import homework14.inputDevices.KeyboardAndMouse;
 import homework14.inputDevices.PSController;
@@ -10,6 +11,8 @@ import homework14.platforms.Xbox;
 
 import java.util.List;
 
+import static homework14.games.ScreenResolution.*;
+
 public class Main {
     public static void main(String[] args) {
         PSController psController = new PSController();
@@ -17,18 +20,17 @@ public class Main {
         KeyboardAndMouse keyboardAndMouse = new KeyboardAndMouse();
 
         // task 1-3
-        Windows windows = new Windows(720, psController);
-        Xbox xbox = new Xbox(1080, xboxController);
-        PlayStation playStation = new PlayStation(1080, psController);
+        Windows windows = new Windows(valueOf("HD"), psController);
+        Xbox xbox = new Xbox(toScreenResolution(1080), xboxController);
+        PlayStation playStation = new PlayStation(FULL_HD, psController);
 
         Tetris tetris = new Tetris(List.of(windows, xbox));
-
 
         windows.startGame(tetris);
         System.out.println("------------------------------");
         playStation.startGame(tetris);
         System.out.println("------------------------------");
-        xbox.setScreenResolution(420);
+        xbox.setScreenResolution(ScreenResolution.P420);
         xbox.startGame(tetris);
         System.out.println("------------------------------");
         windows.setInputDevice(keyboardAndMouse);

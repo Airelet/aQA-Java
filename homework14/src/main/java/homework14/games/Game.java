@@ -5,7 +5,6 @@ import homework14.platforms.Platform;
 import java.util.List;
 
 public abstract class Game {
-    private final static List<Integer> SCREEN_RESOLUTIONS = List.of(420, 720, 1080, 1440, 2160);
     private final String gameName;
     private final int minScreenResolution;
     private final List<Platform> supportedPlatforms;
@@ -17,8 +16,7 @@ public abstract class Game {
     }
 
     protected boolean meetsScreenResolutionReq(Platform platform) {
-        return (platform.getScreenResolution() >= minScreenResolution &&
-                SCREEN_RESOLUTIONS.contains(platform.getScreenResolution()));
+        return (platform.getScreenResolution() >= minScreenResolution);
     }
 
     public String getGameName() {
@@ -49,8 +47,7 @@ public abstract class Game {
         }
         platformNamesBuilder.replace(platformNamesBuilder.length() - 2, platformNamesBuilder.length(), "");
 
-        return "All possible screen resolutions in games: " + SCREEN_RESOLUTIONS + "\n" +
-                "The Name of the game: " + gameName + "\n" +
+        return "The Name of the game: " + gameName + "\n" +
                 "Minimal screen for the game: " + minScreenResolution + "\n" +
                 "Platforms supported by the game: " + platformNamesBuilder;
     }

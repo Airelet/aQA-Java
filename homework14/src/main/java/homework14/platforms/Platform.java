@@ -1,14 +1,15 @@
 package homework14.platforms;
 
 import homework14.games.Game;
+import homework14.games.ScreenResolution;
 import homework14.inputDevices.Controller;
 
 public abstract class Platform {
     private final String platformName;
-    private int screenResolution;
+    private ScreenResolution screenResolution;
     private Controller inputDevice;
 
-    public Platform(String platformName, int screenResolution, Controller controller) {
+    public Platform(String platformName, ScreenResolution screenResolution, Controller controller) {
         this.platformName = platformName;
         this.screenResolution = screenResolution;
         this.inputDevice = controller;
@@ -26,12 +27,12 @@ public abstract class Platform {
         return platformName;
     }
 
-    public void setScreenResolution(int screenResolution) {
+    public void setScreenResolution(ScreenResolution screenResolution) {
         this.screenResolution = screenResolution;
     }
 
     public int getScreenResolution() {
-        return screenResolution;
+        return screenResolution.getPixelResolution();
     }
 
     public abstract void startGame(Game game);

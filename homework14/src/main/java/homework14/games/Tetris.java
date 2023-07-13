@@ -5,7 +5,7 @@ import homework14.platforms.Platform;
 import java.util.List;
 
 public class Tetris extends Game {
-    private static final int MIN_SCREEN_RESOLUTION = 720;
+    private static final int MIN_SCREEN_RESOLUTION = ScreenResolution.HD.getPixelResolution();
 
     public Tetris(List<Platform> supportedPlatforms) {
         super("Tetris", supportedPlatforms, MIN_SCREEN_RESOLUTION);

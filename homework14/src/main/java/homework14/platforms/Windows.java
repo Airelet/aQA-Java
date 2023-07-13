@@ -1,12 +1,13 @@
 package homework14.platforms;
 
 import homework14.games.Game;
+import homework14.games.ScreenResolution;
 import homework14.inputDevices.Controller;
 
 public class Windows extends PC {
 
 
-    public Windows(int screenResolution, Controller controller) {
+    public Windows(ScreenResolution screenResolution, Controller controller) {
         super(screenResolution, controller);
     }
 
