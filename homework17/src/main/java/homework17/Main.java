@@ -21,5 +21,8 @@ public class Main {
         System.out.println(market.getPricesHigherThan10());
         System.out.println(market.getPricesLowerThan5());
         System.out.println(market.printPrices());
+
+        //homework 17
+        System.out.println(market.printPricesAsc());
     }
 }

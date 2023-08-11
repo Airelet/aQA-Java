@@ -5,10 +5,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProductMarket {
-    private final List<Product> products;
+    private ArrayList<Product> products = new ArrayList<>();
 
     public ProductMarket(List<Product> products) {
-        this.products = products;
+        this.products.addAll(products);
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
     public List<String> getNames() {
@@ -49,11 +53,24 @@ public class ProductMarket {
         return String.join(", ", getStringPrices());
     }
 
+    public String printPricesAsc() {
+        return String.join(", ", getStringPricesAsc());
+    }
+
     private List<String> getStringPrices() {
-        List<String> price = new ArrayList<>();
+        List<String> prices = new ArrayList<>();
         for (Product p : products) {
-            price.add(String.valueOf(p.getPrice()));
+            prices.add(String.valueOf(p.getPrice()));
         }
-        return price;
+        return prices;
+    }
+
+    private List<String> getStringPricesAsc() {
+        List<String> prices = new ArrayList<>();
+        Collections.sort(products);
+        for (Product p : products) {
+            prices.add(String.valueOf(p.getPrice()));
+        }
+        return prices;
     }
 }
