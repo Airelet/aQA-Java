@@ -1,76 +1,55 @@
 package homework18;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductMarket {
-    private ArrayList<Product> products = new ArrayList<>();
+    private final ArrayList<Product> products = new ArrayList<>();
 
     public ProductMarket(List<Product> products) {
         this.products.addAll(products);
     }
 
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
     public List<String> getNames() {
-        List<String> names = new ArrayList<>();
-        for (Product p : products) {
-            names.add(p.getName());
-        }
-        return names;
+        return products.stream()
+                .map(Product::getName)
+                .collect(Collectors.toList());
     }
 
     public List<String> getNamesInAlphabeticalOrder() {
-        List<String> namesSorted = getNames();
-        Collections.sort(namesSorted);
-        return namesSorted;
+        return products.stream()
+                .map(Product::getName)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public List<Double> getPricesHigherThan10() {
-        List<Double> pricesHigherThan10 = new ArrayList<>();
-        for (Product p : products) {
-            if (p.getPrice() > 10) {
-                pricesHigherThan10.add(p.getPrice());
-            }
-        }
-        return pricesHigherThan10;
+        return products.stream()
+                .map(Product::getPrice)
+                .filter(price -> price > 10)
+                .collect(Collectors.toList());
     }
 
     public List<Double> getPricesLowerThan5() {
-        List<Double> pricesLowerThan5 = new ArrayList<>();
-        for (Product p : products) {
-            if (p.getPrice() < 5) {
-                pricesLowerThan5.add(p.getPrice());
-            }
-        }
-        return pricesLowerThan5;
+        return products.stream()
+                .map(Product::getPrice)
+                .filter(price -> price < 5)
+                .collect(Collectors.toList());
     }
 
     public String printPrices() {
-        return String.join(", ", getStringPrices());
+        return products.stream()
+                .map(Product::getPrice)
+                .map(Object::toString)
+                .collect(Collectors.joining(", "));
     }
 
     public String printPricesAsc() {
-        return String.join(", ", getStringPricesAsc());
-    }
-
-    private List<String> getStringPrices() {
-        List<String> prices = new ArrayList<>();
-        for (Product p : products) {
-            prices.add(String.valueOf(p.getPrice()));
-        }
-        return prices;
-    }
-
-    private List<String> getStringPricesAsc() {
-        List<String> prices = new ArrayList<>();
-        Collections.sort(products);
-        for (Product p : products) {
-            prices.add(String.valueOf(p.getPrice()));
-        }
-        return prices;
+        return products.stream()
+                .map(Product::getPrice)
+                .sorted()
+                .map(Object::toString)
+                .collect(Collectors.joining(", "));
     }
 }
