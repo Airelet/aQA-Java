@@ -1,0 +1,10 @@
+<suite name="My test suite">
+    <test name="testMultiply">
+        <parameter name="x" value="5"/>
+        <parameter name="y" value="2"/>
+        <parameter name="expectedResult" value="10"/>
+        <classes>
+            <class name="CalculatorTest"/>
+        </classes>
+    </test>
+</suite>
